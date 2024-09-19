@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Cluster analysis of Thai patients with newly diagnosed type 2 diabetes</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+        }
+        .container {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            padding: 20px;
+            max-width: 400px;
+            width: 100%;
+        }
+        .banner h1 {
+            font-size: 1.5em;
+            color: #333;
+            margin: 0 0 10px;
+        }
+        .banner p {
+            margin: 10px 0;
+            font-size: 0.9em;
+            color: #666;
+        }
+        form {
+            width: 100%;
+        }
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            color: blue;
+            font-weight: bold;
+            margin-bottom: 5px;
+            text-align: left;
+        }
+        input[type="text"] {
+            width: calc(100% - 20px);
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1em;
+            box-sizing: border-box;
+            text-align: center;
+        }
+        input[type="submit"] {
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            width: 100%;
+        }
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+        h2 {
+            color: red;
+            margin-top: 20px;
+        }
+        h3 {
+            color: #333;
+        }
+        .footer {
+            margin-top: 20px;
+            font-size: 0.8em;
+            color: #666;
+        }
+        @media (max-width: 600px) {
+            .container {
+                padding: 15px;
+            }
+            .banner h1 {
+                font-size: 1.2em;
+            }
+            input[type="submit"] {
+                padding: 10px;
+                font-size: 1em;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="banner">
+        <h1>Cluster analysis of Thai patients with newly diagnosed type 2 diabetes</h1>
+    </div>
+    <form action="{{ url_for('predict') }}" method="post">
+        <div class="form-group">
+            <label for="Age">Age</label>
+            <input type="text" name="Age" required="required" />
+        </div>
+        <div class="form-group">
+            <label for="Height">Height</label>
+            <input type="text" name="Height" required="required" />
+        </div>
+        <div class="form-group">
+            <label for="Weight">Weight</label>
+            <input type="text" name="Weight" required="required" />
+        </div>
+        <div class="form-group">
+            <label for="HbA1c">HbA1c</label>
+            <input type="text" name="HbA1c" required="required" />
+        </div>
+        <div class="form-group">
+            <label for="Triglyceride">Triglyceride</label>
+            <input type="text" name="Triglyceride" required="required" />
+
+        </div><div class="form-group">
+            <label for="HDL">HDL</label>
+            <input type="text" name="HDL" required="required" />
+        </div>
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>
+   

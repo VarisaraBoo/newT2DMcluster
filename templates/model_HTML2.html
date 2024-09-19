@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Cluster analysis of Thai patients with newly diagnosed type 2 diabetes</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+        }
+        .container {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            padding: 20px;
+            max-width: 400px;
+            width: 100%;
+        }
+        .banner h1 {
+            font-size: 1.5em;
+            color: #333;
+            margin: 0 0 10px;
+        }
+        .banner p {
+            margin: 10px 0;
+            font-size: 0.9em;
+            color: #666;
+        }
+        form {
+            width: 100%;
+        }
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            color: blue;
+            font-weight: bold;
+            margin-bottom: 5px;
+            text-align: left;
+        }
+        input[type="text"] {
+            width: calc(100% - 20px);
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1em;
+            box-sizing: border-box;
+            text-align: center;
+        }
+        input[type="submit"] {
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            width: 100%;
+        }
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+        h2 {
+            color: red;
+            margin-top: 20px;
+        }
+        h3 {
+            color: blue; /* Set char text color to blue */
+            margin-top: 10px; /* Add some top margin for better spacing */
+        }
+        .footer {
+            margin-top: 20px;
+            font-size: 0.8em;
+            color: #666;
+        }
+        @media (max-width: 600px) {
+            .container {
+                padding: 15px;
+            }
+            .banner h1 {
+                font-size: 1.2em;
+            }
+            input[type="submit"] {
+                padding: 10px;
+                font-size: 1em;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="banner">
+        <h1>Cluster analysis of Thai patients with newly diagnosed type 2 diabetes</h1>
+    </div>
+    <form action="{{ url_for('predict') }}" method="post">
+    <!-- Display input values -->
+    <p>Age: {{ request.form['Age'] }}</p>
+    <p>Height: {{ request.form['Height'] }}</p>
+    <p>Weight: {{ request.form['Weight'] }}</p>
+    <p>HbA1c: {{ request.form['HbA1c'] }}</p>
+    <p>Triglyceride: {{ request.form['Triglyceride'] }}</p>
+    <p>HDL: {{ request.form['HDL'] }}</p>
+
+    <h2>{{ kmeans }}</h2>
+    <h3>{{ char }}</h3>
+    </form>
+<script>
+    // Function to display input values in a popup
+    function displayInputValues() {
+        var form = document.getElementById('dataForm');
+        var formData = new FormData(form);
+
+        var message = "";
+        for (var pair of formData.entries()) {
+            message += pair[0] + ": " + pair[1] + "\n";
+        }
+
+        alert(message);
+    }
+
+    // Call the function when the page loads
+    window.onload = function () {
+        displayInputValues();
+    };
+</script>
+
+</body>
+</html>
